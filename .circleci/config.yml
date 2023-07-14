@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           name: Modify directory permissions
-          command: chmod -R 777 specialist_recommender.git
+          command: sudo chmod -R 777 specialist_recommender.git
 
       - run:
           name: Upgrade pip
