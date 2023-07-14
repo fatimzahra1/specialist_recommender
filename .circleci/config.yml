@@ -10,9 +10,6 @@ jobs:
           command: |
             pip install --upgrade pip
       - run:
-          name: Install dependencies
-          command: pip install -r specialist_recommender/requirements.txt
-      - run:
           name: Install Docker client
           command: |
             set -x
