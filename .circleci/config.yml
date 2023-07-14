@@ -10,7 +10,7 @@ executors:
           password: $password
 jobs:
   my-job:
-    resource_class: gpu.small
+    resource_class: small
     executor: my-custom-executor
     steps:
       - checkout
