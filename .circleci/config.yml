@@ -2,25 +2,28 @@ version: 2.1
 executors:
   my-custom-executor:
     docker:
-      - image: cimg/python
+      - image: cimg/python:stable
         auth:
           # ensure you have first added these secrets
           # visit app.circleci.com/settings/project/github/fatimzahra1/specialist_recommender/environment-variables
-          username: $DOCKER_HUB_USER
-          password: $DOCKER_HUB_PASSWORD
+          username: $username
+          password: $username
 jobs:
-  spec:
+  my-job-name:
 
     executor: my-custom-executor
     steps:
       - checkout
       - run: |
-          # echo Hello, World!
+           command: docker build -t specialist .
+           docker login -u ${username} -p ${password}
+           docker push specialist
+          
 
 workflows:
   my-custom-workflow:
     jobs:
-      - spec
+      - my-job-name
 
 
 
