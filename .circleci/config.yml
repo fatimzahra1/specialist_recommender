@@ -21,16 +21,12 @@ jobs:
           command: pip install -r specialist_recommender/requirements.txt
 
       - run:
-         # Builds a docker image to push to Docker Hub
-				 # Tag (-t) pattern is below, where CircleCI 
-				 # to get the Dockerfile from the current directory.
-         # <docker_hub_username/docker-hub-password:version>.
+      
           name: Build Docker image
           command: docker build -t specialist .
 
       - run:
-        # Pushes the Docker image you created to the Docker Hub.
-       
+    
           name: Push to Docker Hub
           command: |
             docker login -u ${username} -p ${password}
