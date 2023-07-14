@@ -1,14 +1,11 @@
-version: 2.1
-
-orbs:
-  docker: circleci/docker@1.7.0
-
+version: 2
 jobs:
   build:
     docker:
      -image:3.8
     steps:
       - checkout
+      
       - run:
           name: Upgrade pip
           command: |
@@ -39,11 +36,6 @@ jobs:
             docker login -u ${username} -p ${password}
             docker push specialist
 
-workflows:
-  version: 2
-  example-workflow:
-    jobs:
-      - build
 
 
 
