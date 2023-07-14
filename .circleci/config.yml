@@ -6,6 +6,9 @@ jobs:
   build:
     docker:
       - image: specialist
+      - auth:
+          username: ${username}
+          password: ${password}
     steps:
       - checkout
       - run:
