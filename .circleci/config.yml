@@ -10,9 +10,8 @@ executors:
           password: $password
 jobs:
   my-job:
-
-    executor: my-custom-executor
     resource_class: small
+    executor: my-custom-executor
     steps:
       - checkout
       - run: |
