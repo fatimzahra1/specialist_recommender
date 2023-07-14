@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.8
+        auth:
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
 
     working_directory: specialist_recommender
 
