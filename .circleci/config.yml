@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/python:3.8
 
-    working_directory: /home/circleci/specialist_recommender
+    working_directory: home/specialist_recommender
 
     steps:
       - checkout
@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Install dependencies
-          command: pip install -r .circleci/requirements.txt
+          command: pip install -r home/requirements.txt
       - run:
           name: Build Docker image
           command: docker build -t specialist-recommender-image .
