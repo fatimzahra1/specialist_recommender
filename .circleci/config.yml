@@ -1,4 +1,4 @@
-
+version: 2.1
 orbs:
   docker: circleci/docker@1.7.0
 
@@ -17,8 +17,9 @@ jobs:
           command: pip install -r specialist_recommender/requirements.txt
 
 workflows:
- 
+  version: 2
   example-workflow:
     jobs:
       - build
+
 
