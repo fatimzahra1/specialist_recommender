@@ -15,9 +15,10 @@ jobs:
     steps:
       - checkout
       - run: |
-           command: docker build -t specialist .
-           docker login -u ${username} -p ${password}
-           docker push specialist
+           command: |
+             docker build -t specialist .
+             docker login -u ${username} -p ${password}
+             docker push specialist
           
 
 workflows:
