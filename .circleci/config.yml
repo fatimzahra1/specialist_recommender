@@ -1,20 +1,25 @@
 version: 2.1
+
 orbs:
   docker: circleci/docker@1.7.0
 
 jobs:
   build:
     docker:
-      - image: specialist
-      - auth:
-          username: ${username}
-          password: ${password}
+      - image: circleci/python:3.8
     steps:
       - checkout
+
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t specialist .
+
       - run:
           name: Upgrade pip
           command: |
             pip install --upgrade pip
+
       - run:
           name: Install dependencies
           command: pip install -r specialist_recommender/requirements.txt
@@ -24,5 +29,6 @@ workflows:
   example-workflow:
     jobs:
       - build
+
 
 
