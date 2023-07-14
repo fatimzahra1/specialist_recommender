@@ -2,19 +2,17 @@ version: 2
 jobs:
   build:
     docker:
-      - image:3.8
+      - image: circleci/python:3.8
     steps:
       - checkout
       - run:
           name: Upgrade pip
           command: |
             pip install --upgrade pip
-
       - run:
           name: Install dependencies
           command: pip install -r specialist_recommender/requirements.txt
-       - run:
-        # installs a docker client that will be used to run the docker commands
+      - run:
           name: Install Docker client
           command: |
             set -x
@@ -22,18 +20,15 @@ jobs:
             curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
-
       - run:
-      
           name: Build Docker image
           command: docker build -t specialist .
-
       - run:
-    
           name: Push to Docker Hub
           command: |
             docker login -u ${username} -p ${password}
             docker push specialist
+
 
 
 
