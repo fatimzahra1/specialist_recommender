@@ -12,6 +12,7 @@ jobs:
   my-job:
 
     executor: my-custom-executor
+    resource_class: small
     steps:
       - checkout
       - run: |
