@@ -4,22 +4,15 @@ jobs:
     docker:
       - image: circleci/python:3.8
 
-    working_directory: /app
+    working_directory: /home/circleci/project
 
     steps:
       - checkout
 
       - run:
           name: Install dependencies
-          command: pip install -r requirements.txt
+          command: pip install -r specialist_recommender/requirements.txt
 
       - run:
           name: Build Docker image
-          command: docker build -t specialist-recommender-image .
-
-      - run:
-          name: Push Docker image to Docker Hub
-          command: |
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker tag specialist-recommender-image "$DOCKER_USERNAME/specialist-recommender-image:latest"
-            docker push "$DOCKER_USERNAME/specialist-recommender-image:latest"
+          command: docker build -t specialist-recommender-image specialist_recommender/
