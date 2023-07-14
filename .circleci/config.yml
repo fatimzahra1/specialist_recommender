@@ -4,15 +4,21 @@ jobs:
     docker:
       - image: circleci/python:3.8
 
-    working_directory: /home/circleci/specialist_recommender
+    working_directory: specialist_recommender
 
     steps:
-      - checkout
+      - run:
+          name: Modify directory permissions
+          command: sudo chmod -R 777 specialist_recommender.git
+
+      - run:
+          name: Upgrade pip
+          command: |
+            pip install --upgrade pip
 
       - run:
           name: Install dependencies
-          command: pip install -r requirements.txt
-
+          command: pip install -r specialist_recommender/requirements.txt
       - run:
           name: Build Docker image
-          command: docker build -t specialist-recommender-image specialist_recommender/
+          command: docker build -t specialist-recommender-image .
