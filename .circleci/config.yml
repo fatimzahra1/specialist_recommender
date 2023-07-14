@@ -1,27 +1,24 @@
-version: 2.1
+
+orbs:
+  docker: circleci/docker@1.7.0
+
 jobs:
   build:
     docker:
-      - image: circleci/python:3.8
-        auth:
-          username: $DOCKER_HUB_USER
-          password: $DOCKER_HUB_PASSWORD
-
-    working_directory: specialist_recommender
-
+      - image: specialist
     steps:
-      - run:
-          name: Modify directory permissions
-          command: sudo chmod -R 777 specialist_recommender.git
-
+      - checkout
       - run:
           name: Upgrade pip
           command: |
             pip install --upgrade pip
-
       - run:
           name: Install dependencies
           command: pip install -r specialist_recommender/requirements.txt
-      - run:
-          name: Build Docker image
-          command: docker build -t specialist-recommender-image .
+
+workflows:
+ 
+  example-workflow:
+    jobs:
+      - build
+
