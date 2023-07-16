@@ -1,31 +1,19 @@
 version: 2.1
-executors:
-  my-custom-executor:
+
+jobs:
+  build:
     docker:
       - image: circleci/python:3.8
-        auth:
-          # ensure you have first added these secret
-          # visit app.circleci.com/settings/project/github/fatimzahra1/specialist_recommender/environment-variables
-          username: $username
-          password: $username
-jobs:
-  my-job-name:
-
-    executor: my-custom-executor
     steps:
       - checkout
       - setup_remote_docker
-      - run: |
-           command: 
-             docker build -t specialist .
-             docker login -u ${username} -p ${password}
-             docker push specialist
-          
+      - run:
+          name: Build and Push Docker Image
+          command: |
+            docker build -t specialist .
+            docker login -u ${username} -p ${password}
+            docker push specialist
 
-workflows:
-  my-custom-workflow:
-    jobs:
-      - my-job-name
 
 
 
