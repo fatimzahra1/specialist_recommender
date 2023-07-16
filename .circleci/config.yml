@@ -4,7 +4,7 @@ executors:
     docker:
       - image: circleci/python:3.8
         auth:
-          # ensure you have first added these secrets
+          # ensure you have first added these secret
           # visit app.circleci.com/settings/project/github/fatimzahra1/specialist_recommender/environment-variables
           username: $username
           password: $username
