@@ -11,7 +11,7 @@ jobs:
           name: Build and Push Docker Image
           command: |
             docker build -t specialist .
-            docker login -u ${username} -p ${password}
+            echo "${password}" | docker login -u "${username}" --password-stdin
             docker push specialist
 
 
