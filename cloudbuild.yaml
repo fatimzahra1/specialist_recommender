@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/specialist-recommender-393012/spec:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/specialist-recommender-393012/spec:$COMMIT_SHA', '-f', 'path/to/Dockerfile', '.']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/specialist-recommender-393012/spec:$COMMIT_SHA']
 images:
