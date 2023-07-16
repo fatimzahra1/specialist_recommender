@@ -5,7 +5,7 @@ FROM continuumio/anaconda3:latest
 WORKDIR /specialist_recommender
 
 # Copy the contents of the specialist recommender folder to the container
-COPY app.py trained_model.joblib .
+COPY app.py trained_model.joblib ./
 
 RUN pip install waitress
 
