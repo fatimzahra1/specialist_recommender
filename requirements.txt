@@ -1,4 +1,6 @@
 Flask
 joblib
 json5
+gunicorn
+waitress
 
