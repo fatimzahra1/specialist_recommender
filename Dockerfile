@@ -7,7 +7,7 @@ WORKDIR /specialist_recommender
 # Copy the contents of the specialist recommender folder to the container
 COPY app.py trained_model.joblib requirements.txt ./
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Expose the port your app will run on
 EXPOSE 5000
