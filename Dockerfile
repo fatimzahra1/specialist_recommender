@@ -7,10 +7,10 @@ WORKDIR /specialist_recommender
 # Copy the contents of the specialist recommender folder to the container
 COPY app.py trained_model.joblib ./
 
-RUN pip install waitress
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port your app will run on
 EXPOSE 5000
 
 # Set the command to run your app
-CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
