@@ -9,6 +9,13 @@ app = Flask(__name__)
 
 model= joblib.load("trained_model.joblib")
 
+@app.route('/',methods=['GET'])
+def get():
+    try:
+         return jsonify({'prediction':'anything'})
+    except Exception as e:
+        return jsonify({"error":str(e)})
+
 # Define a route for prediction 
 
 @app.route('/predict', methods=['POST'])
