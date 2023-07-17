@@ -13,10 +13,23 @@ model= joblib.load("trained_model.joblib")
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json
-    data = np.array(list(data.values())).reshape(1,-1)
-    prediction= model.predict(data)
-    return jsonify({'prediction':prediction.tolist()})
+    try:
+         data = request.json
+         data = np.array(list(data.values())).reshape(1,-1)
+         prediction= model.predict(data)
+         return jsonify({'prediction':prediction.tolist()})
+    except Exception as e:
+        return jsonify({"error":str(e)})
+    
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({"error":"Not Found"}), 404
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return jsonify({"error":"Not Found"}), 404
+        
+   
 
 # Run the Flask app
 
