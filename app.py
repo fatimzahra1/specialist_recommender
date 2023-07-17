@@ -22,6 +22,8 @@ def get():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
+        from symptoms import my_dict
+        
         data_array = request.json
 
         for symptom in data_array:
