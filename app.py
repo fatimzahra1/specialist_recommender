@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import joblib
 from waitress import serve
 import numpy as np
-from .symptoms import my_dict
+from symptoms import my_dict
 
 app = Flask(__name__)
 

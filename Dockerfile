@@ -5,7 +5,7 @@ FROM continuumio/anaconda3:latest
 WORKDIR /specialist_recommender
 
 # Copy the contents of the specialist recommender folder to the container
-COPY app.py trained_model.joblib requirements.txt ./
+COPY app.py trained_model.joblib requirements.txt symptoms.py ./
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
