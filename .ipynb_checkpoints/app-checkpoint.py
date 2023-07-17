@@ -13,7 +13,7 @@ model = joblib.load("trained_model.joblib")
 @app.route('/', methods=['GET'])
 def get():
     try:
-        return jsonify({'prediction': 'anything'})
+        return jsonify(my_dict)
     except Exception as e:
         return jsonify({"error": str(e)})
 
